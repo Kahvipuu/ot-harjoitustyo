@@ -1,0 +1,115 @@
+awpartan@dx5-cs-bk107-20:/home/ad/lxhome/a/awpartan/Linux/kurssit/_ot2019/ot_viikko1$ git log --stat|cat
+commit cdc1cd35f53eb29e2ef6f6d2da11db1ab53a0319
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 15:11:00 2019 +0200
+
+    harjoittelua ,huom. file1->file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 89a531d9796618949e4b0def610014b4efb3dd40
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 15:06:25 2019 +0200
+
+    uusia tiedostoja 3kpl
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a1539179972506e6749af1d4abca66235d9ee785
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:59:32 2019 +0200
+
+    add -p muutokset
+
+ eka.txt    | 3 +++
+ kolmas.txt | 2 ++
+ 2 files changed, 5 insertions(+)
+
+commit ac5fa1190ba2e7793305c099a12b8d93629cfeb1
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:42:04 2019 +0200
+
+    uudelleen nimeäminen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ac5b4ea4f09dee9c71a87237595211885e4d897b
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:41:07 2019 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 98d423f33aa5f5b6e8fa4e2604294c8d23454e5c
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:37:55 2019 +0200
+
+    muutoksia tiedosto.txt
+
+ tiedosto.txt | 38 ++++++++++++++++++++------------------
+ 1 file changed, 20 insertions(+), 18 deletions(-)
+
+commit 58bba4b113b6c1044aca8593467bcefcdfdcbb5d
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:34:10 2019 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+
+commit ae8e465faa900a8894281ee4c37b49a74d6a9cae
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:25:17 2019 +0200
+
+    hakewmisti
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e4fee85496cbe78d70c4b9a9bea97162ff1027a6
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:23:56 2019 +0200
+
+    jotain muutoksia 2. ja 3.
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 8ed46fa39109ba14ca51921b1d1e4d7229f51a2c
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:22:28 2019 +0200
+
+    kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit dce6d2160e3d4a5697f5476d963b0b73111b9d8b
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:12:42 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 5bcac527b737ee377e14661b04230bddb7f5e389
+Author: Kahvipuu <partaar@hotmail.com>
+Date:   Wed Mar 13 14:07:18 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+awpartan@dx5-cs-bk107-20:/home/ad/lxhome/a/awpartan/Linux/kurssit/_ot2019/ot_viikko1$

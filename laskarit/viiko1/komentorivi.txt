@@ -1,0 +1,27 @@
+awpartan@melkinpaasi:~$ tree kurssit/
+kurssit/
+└── _ot2019
+    ├── doc
+    └── viikko1
+        └── Unicafe
+            ├── pom.xml
+            └── src
+                ├── main
+                │   ├── java
+                │   │   └── com
+                │   │       └── mycompany
+                │   │           └── unicafe
+                │   │               ├── Kassapaate.java
+                │   │               ├── Maksukortti.java
+                │   │               └── Paaohjelma.java
+                │   └── resources
+                └── test
+                    └── java
+                        └── com
+                            └── mycompany
+                                └── unicafe
+                                    └── MaksukorttiTest.java
+
+15 directories, 6 files
+awpartan@melkinpaasi:~$
+
