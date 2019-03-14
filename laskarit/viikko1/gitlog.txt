@@ -1,3 +1,5 @@
+Satunnaienn testimuutos nro 2
+
 awpartan@dx5-cs-bk107-20:/home/ad/lxhome/a/awpartan/Linux/kurssit/_ot2019/ot_viikko1$ git log --stat|cat
 commit cdc1cd35f53eb29e2ef6f6d2da11db1ab53a0319
 Author: Kahvipuu <partaar@hotmail.com>
