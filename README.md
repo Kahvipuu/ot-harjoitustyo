@@ -8,3 +8,5 @@ _kurs**lihavoitu**ivoitu_
 [gitlog.txt](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
 [komentorivi.txt](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+
+Satunnaoinen testimuutos!
