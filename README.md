@@ -1,13 +1,13 @@
-#FribaTulosApp
+# FribaTulosApp
 
 Sovellukseen merkitään frisbeegolf tulokset kierroksittain ja henkilöittäin.
 Tarkoituksena olisi saada tulokset talteen ja tilastoja radoittain ja henkilöittäin.
 
-##Dokumentaatio
+## Dokumentaatio
 [vaatimusmaarittely.md](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/vaatimusmaarittely.md)
 
 
-##Työaikakirjanpito
+## Työaikakirjanpito
 [tyoaikakirjanpito.md](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/tyoaikakirjanpito.md)
 
 
