@@ -49,9 +49,21 @@ public class MainTest {
 
     @Test
     public void creatingPlayer() {
-        assertEquals("MrNobody", this.player.getNimi());
+        assertEquals("MrNobody", this.player.getName());
     }
 
+    @Test
+    public void creatingCourse(){
+        assertEquals(18, this.course.getNumberOfHoles());
+        assertEquals("test", this.course.getName());
+        
+    }
+    
+    @Test
+    public void creatingROP(){
+            assertEquals(course, this.rop.getCourse());  //milläköhän tämä testaa equalsin??
+    }
+    
 
 
     // TODO add test methods here.

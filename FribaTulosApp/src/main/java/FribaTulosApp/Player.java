@@ -3,25 +3,25 @@ package FribaTulosApp;
 // Guest/User jako tulevaisuudessa ehkä, (implements Player)
 public class Player {
 
-    String nimi;
-    int tunnus;
+    String name;
+    int password;
     
-    public Player(String nimi) {
-        this.nimi = nimi;
+    public Player(String name) {
+        this.name = name;
 
     }
 
-    public Player(String nimi, int tunnus) {
-        this.nimi = nimi;
-        this.tunnus = tunnus;
+    public Player(String name, int password) {
+        this.name = name;
+        this.password = password; //mikäköhän tästä piti tulla?? oli tunnus
     }    
     
-    public String getNimi() {
-        return this.nimi;
+    public String getName() {
+        return this.name;
     }
 
-    public void setNImi(String nimi) {
-        this.nimi = nimi;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

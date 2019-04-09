@@ -15,12 +15,15 @@ public class RoundOfPlay {
     }
     
     public void addPlayer(Player player){
-        this.players.putIfAbsent(player, new int[course.numberOfHoles]);
+        this.players.putIfAbsent(player, new int[course.getNumberOfHoles()]);
     }
     
     public void addResult(Player player, int holeNumber, int result){
         this.players.get(player)[holeNumber] = result;
     }
     
+    public Course getCourse() {
+        return course;
+    }
     
 }
