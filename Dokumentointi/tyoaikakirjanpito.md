@@ -10,4 +10,4 @@ x |x | Viikkokausia aiheen pähkäilyä
 16.4.2019 | 2 | Viikon 4 vaatimuksia kasaan; Checkstyle, arkkitehtuuri
 16.4.2019 | 2 | Lisää checkstylea, logiikan miettimistä ja ohjeman rakenteen korjailua
 
-Yht. | 8 |
+Yht. | 12 |
