@@ -51,7 +51,7 @@ public class AppUi extends Application {
         createNewPlayerLayout2.add(playerNameLabel, 0, 0);
         createNewPlayerLayout2.add(playerNameField, 1, 0);
 
-        createPlayerButton.setOnAction((event) -> new Player(playerNameField.getText()));  // Pejaajat ehkä Listaan, niin saa otteen uusista
+        createPlayerButton.setOnAction((event) -> new Player(playerNameField.getText()));  // Pejaajat ehkä Listaan, niin saa otteen uusista.. itse luonti Service-luokkaan
         createNewPlayerLayout2.add(createPlayerButton, 2, 0);
 
         Scene naytettava = new Scene(layout);
