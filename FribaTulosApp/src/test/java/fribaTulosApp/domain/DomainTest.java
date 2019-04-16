@@ -5,7 +5,6 @@ package fribaTulosApp.domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import fribatulosapp.domain.Course;
 import fribatulosapp.domain.Player;
 import fribatulosapp.domain.RoundOfPlay;
@@ -55,19 +54,31 @@ public class DomainTest {
     }
 
     @Test
-    public void creatingCourse(){
+    public void creatingCourse() {
         assertEquals(18, this.course.getNumberOfHoles());
         assertEquals("test", this.course.getName());
-        
+
     }
-    
+
     @Test
-    public void creatingROP(){
-            assertEquals(course, this.rop.getCourse());  //milläköhän tämä testaa equalsin??
+    public void creatingROP() {
+        assertEquals(course, this.rop.getCourse());  //milläköhän tämä testaa equalsin??
     }
-    
 
+    @Test
+    public void addPlayerToROP() {
+        this.rop.addPlayer(this.player);
+        assertEquals(player.getName(), rop.getPlayer("MrNobody").getName());  //equals pitää laittaa kuntoon.... hätäinen string assert
+    }
 
+    @Test
+    public void addResult() {
+        this.rop.addPlayer(player);
+        this.rop.addResult(player, 1, 5);
+        this.rop.addResult(player, 1, 3);
+        this.rop.addResult(player, 2, 4);
+        assertEquals(3, rop.getResult(player, 1));
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

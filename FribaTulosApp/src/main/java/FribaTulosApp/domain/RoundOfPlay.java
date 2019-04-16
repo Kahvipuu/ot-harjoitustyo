@@ -10,6 +10,7 @@ public class RoundOfPlay {
 
     public RoundOfPlay(Course course) {
         this.course = course;
+        this.players = new HashMap<>();
     }
 
     public void addPlayer(Player player) {
@@ -22,6 +23,19 @@ public class RoundOfPlay {
 
     public Course getCourse() {
         return course;
+    }
+
+    public Player getPlayer(String name) {
+        for (Player player : players.keySet()) {
+            if (player.getName().equals(name)) {
+                return player;
+            }
+        }
+        return null;    //saattaa joutua muokkaamaan
+    }
+
+    public int getResult(Player player, int hole) {
+        return players.get(player)[hole];
     }
 
 }
