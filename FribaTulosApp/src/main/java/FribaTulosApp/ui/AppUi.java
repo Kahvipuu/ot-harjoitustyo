@@ -1,5 +1,6 @@
-package FribaTulosApp;
+package fribatulosapp.ui;
 
+import fribatulosapp.domain.Player;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,15 +13,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class FribaTulosApp extends Application {
+public class AppUi extends Application {
 
-    public static int LEVEYS = 600;
-    public static int KORKEUS = 800;
+    public static int leveys = 600;
+    public static int korkeus = 800;
 
     @Override
     public void start(Stage window) throws Exception {
         BorderPane layout = new BorderPane();
-        layout.setPrefSize(LEVEYS, KORKEUS);
+        layout.setPrefSize(leveys, korkeus);
 
         HBox topOfScreen = new HBox();
         layout.setTop(topOfScreen);
@@ -32,7 +33,7 @@ public class FribaTulosApp extends Application {
         topOfScreen.getChildren().add(createPlayer);
         Button something = new Button("Tee Jotain");
         topOfScreen.getChildren().add(something);
-        
+
         StackPane startRoundLayout = createLayout("Kierros");
         StackPane createNewPlayerLayout = createLayout("Pelaaja");
         StackPane somethingLayout = createLayout("Jotain");
@@ -40,21 +41,19 @@ public class FribaTulosApp extends Application {
         startRound.setOnAction((event) -> layout.setCenter(startRoundLayout));
         createPlayer.setOnAction((event) -> layout.setCenter(createNewPlayerLayout));
         something.setOnAction((event) -> layout.setCenter(somethingLayout));
-        
+
         GridPane createNewPlayerLayout2 = new GridPane();
         createNewPlayerLayout.getChildren().add(createNewPlayerLayout2);
-        
+
         Label playerNameLabel = new Label("Nimi: ");
         TextField playerNameField = new TextField();
         Button createPlayerButton = new Button("Luo pelaaja");
         createNewPlayerLayout2.add(playerNameLabel, 0, 0);
         createNewPlayerLayout2.add(playerNameField, 1, 0);
-        
-        createPlayerButton.setOnAction((event)-> new Player(playerNameField.getText()));
+
+        createPlayerButton.setOnAction((event) -> new Player(playerNameField.getText()));  // Pejaajat ehkä Listaan, niin saa otteen uusista
         createNewPlayerLayout2.add(createPlayerButton, 2, 0);
-        
-        
-        
+
         Scene naytettava = new Scene(layout);
 
         window.setTitle("Friba");
@@ -64,8 +63,9 @@ public class FribaTulosApp extends Application {
     }
 
     public static void main(String[] args) {
-        launch(FribaTulosApp.class);
+        launch(AppUi.class);
     }
+
     private StackPane createLayout(String teksti) {
 
         StackPane asettelu = new StackPane();

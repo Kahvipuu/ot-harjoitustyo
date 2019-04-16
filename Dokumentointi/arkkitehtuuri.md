@@ -1,0 +1,1 @@
+<img src="https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/Dokumentointi/kaavio.PNG">

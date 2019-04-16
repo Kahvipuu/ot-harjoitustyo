@@ -1,12 +1,14 @@
+package fribaTulosApp.domain;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import FribaTulosApp.Course;
-import FribaTulosApp.Player;
-import FribaTulosApp.RoundOfPlay;
+import fribatulosapp.domain.Course;
+import fribatulosapp.domain.Player;
+import fribatulosapp.domain.RoundOfPlay;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,9 +20,9 @@ import static org.junit.Assert.*;
  *
  * @author parta
  */
-public class MainTest {
+public class DomainTest {
 
-    public MainTest() {
+    public DomainTest() {
     }
 
     @BeforeClass

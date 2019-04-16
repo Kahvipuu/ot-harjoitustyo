@@ -1,4 +1,4 @@
-package FribaTulosApp;
+package fribatulosapp.domain;
 
 import java.util.ArrayList;
 
