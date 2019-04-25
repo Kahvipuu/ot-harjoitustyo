@@ -9,5 +9,7 @@ x |x | Viikkokausia aiheen pähkäilyä
 9.4.2019 | 2 | Graafinen käyttöliittymä alkuun
 16.4.2019 | 2 | Viikon 4 vaatimuksia kasaan; Checkstyle, arkkitehtuuri
 16.4.2019 | 2 | Lisää checkstylea, logiikan miettimistä ja ohjeman rakenteen korjailua
+24.4.2019 | 1 | Rakenteen pohtimista
+25.4.2019 | 2 | Rakennetta kuntoon appServiceen ja Daoja
 
-Yht. | 12 |
+Yht. | 15 |
