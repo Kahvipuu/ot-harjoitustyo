@@ -4,7 +4,7 @@ package fribatulosapp.domain;
 public class Player {
 
     String name;
-    int password;
+    int password; //joo salasana pois, ei toteuteta tähän versioon.. saattoi tarvita jonkun muun "tunnuksen"??
 
     public Player(String name) {
         this.name = name;
@@ -24,4 +24,13 @@ public class Player {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object player){
+        if (!(player instanceof Player)){
+            return false;
+        }
+        Player toTest = (Player) player;
+        return this.name.equals(toTest.name);
+    }
+    
 }

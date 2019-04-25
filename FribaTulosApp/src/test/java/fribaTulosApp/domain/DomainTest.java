@@ -68,7 +68,7 @@ public class DomainTest {
     @Test
     public void addPlayerToROP() {
         this.rop.addPlayer(this.player);
-        assertEquals(player.getName(), rop.getPlayer("MrNobody").getName());  //equals pitää laittaa kuntoon.... hätäinen string assert
+        assertEquals(player, rop.getPlayer("MrNobody"));  //equals pitää laittaa kuntoon.... hätäinen string assert
     }
 
     @Test

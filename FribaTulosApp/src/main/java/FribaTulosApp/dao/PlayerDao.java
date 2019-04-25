@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fribatulosapp.dao;
 
-/**
- *
- * @author parta
- */
-public class PlayerDao {
+import fribatulosapp.domain.Player;
+import java.util.List;
+
+
+public interface PlayerDao {
+    
+    Player create(Player p) throws Exception;
+    
+    Player findByPlayerName(String s);
+    
+    List<Player> getAll();
     
 }
