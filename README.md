@@ -8,8 +8,10 @@ Tarkoituksena olisi saada tulokset talteen ja tilastoja radoittain ja henkilöit
 
 [arkkitehtuuri.md](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/Dokumentointi/arkkitehtuuri.md)
 
+[Käyttöohje.md](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/Dokumentointi/käyttöohje.md)
+
 ## Releaset
-[release 0](https://github.com/Kahvipuu/ot-harjoitustyo/releases/download/viikko5/FribaTulosApp-1.0-SNAPSHOT.jar)
+[release 1](https://github.com/Kahvipuu/ot-harjoitustyo/releases/download/1b/FribaTulosApp-1.0-SNAPSHOT.jar)
 
 
 ## Työaikakirjanpito
