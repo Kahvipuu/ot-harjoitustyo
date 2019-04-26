@@ -13,4 +13,4 @@ x |x | Viikkokausia aiheen pähkäilyä
 25.4.2019 | 2 | Rakennetta kuntoon appServiceen ja Daoja
 26.4.2019 | 2 | Javadocin opettelua ja tekemistä, arkkitehtuurikuvauksen kirjoittamista ja käyttöohje alkuun
 
-Yht. | 15 |
+Yht. | 17 |
