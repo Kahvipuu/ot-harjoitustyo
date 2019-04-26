@@ -11,5 +11,6 @@ x |x | Viikkokausia aiheen pähkäilyä
 16.4.2019 | 2 | Lisää checkstylea, logiikan miettimistä ja ohjeman rakenteen korjailua
 24.4.2019 | 1 | Rakenteen pohtimista
 25.4.2019 | 2 | Rakennetta kuntoon appServiceen ja Daoja
+26.4.2019 | 2 | Javadocin opettelua ja tekemistä, arkkitehtuurikuvauksen kirjoittamista ja käyttöohje alkuun
 
 Yht. | 15 |
