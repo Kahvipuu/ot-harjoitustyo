@@ -3,6 +3,10 @@ package fribatulosapp.domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Luokka kierrokselle
+ */
+
 public class RoundOfPlay {
 
     Course course;
@@ -13,10 +17,22 @@ public class RoundOfPlay {
         this.players = new HashMap<>();
     }
 
+    
+    /**
+     * Pelaajan lisääminen kierrokselle
+     * @param player Kierrokselle lisättävä pelaaja
+     */
     public void addPlayer(Player player) {
         this.players.putIfAbsent(player, new int[course.getNumberOfHoles()]);
     }
 
+    
+    /**
+     * Tuloksen lisääminen kierroksella olevalle pelaajalle
+     * @param player Pelaaja jolle tulos lisätään
+     * @param holeNumber Väylän numero
+     * @param result Pelaajan heittojen määrä
+     */
     public void addResult(Player player, int holeNumber, int result) {
         this.players.get(player)[holeNumber] = result;
     }

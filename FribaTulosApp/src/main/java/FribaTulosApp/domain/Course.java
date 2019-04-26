@@ -3,6 +3,10 @@ package fribatulosapp.domain;
 import java.util.ArrayList;
 
 // ..ja ArrayListien käytön voisi jopa miettiä... muita vaihtoehtoja..
+
+/**
+ * Olioluokka radalle
+ */
 public class Course {
 
     private String name;

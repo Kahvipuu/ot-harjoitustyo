@@ -1,7 +1,9 @@
 
 package fribatulosapp.domain;
 
-
+/**
+ * Olioluokka yhdelle radan väylistä
+ */
 public class CourseHole {
 
     int ordinal;

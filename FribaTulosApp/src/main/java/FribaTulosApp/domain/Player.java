@@ -1,6 +1,11 @@
 package fribatulosapp.domain;
 
 // Guest/User jako tulevaisuudessa ehkä, (implements Player)
+// Toistaiseksi toteutus niin että pelaajat luodaan ja ovat sitten kaikilla käytössä
+
+/**
+ * Olioluokka pelaajalle
+ */
 public class Player {
 
     String name;

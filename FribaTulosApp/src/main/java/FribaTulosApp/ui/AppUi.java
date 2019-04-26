@@ -12,7 +12,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
+/**
+ * Sovelluksen käyttöliittymästä vastaava luokka
+ */
 public class AppUi extends Application {
 
     public static int leveys = 600;
@@ -52,6 +54,7 @@ public class AppUi extends Application {
         createNewPlayerLayout2.add(playerNameField, 1, 0);
 
         createPlayerButton.setOnAction((event) -> new Player(playerNameField.getText()));  // Pejaajat ehkä Listaan, niin saa otteen uusista.. itse luonti Service-luokkaan
+                                                                                            // ja service tämän luokan privaksi
         createNewPlayerLayout2.add(createPlayerButton, 2, 0);
 
         Scene naytettava = new Scene(layout);
