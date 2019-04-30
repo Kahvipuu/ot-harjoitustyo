@@ -78,7 +78,7 @@ public class FilePlayerDao implements fribatulosapp.dao.PlayerDao { //miksik√∂h√
         }
         return toReturn;
     }
-
+        
     /**
      * Palauttaa kaikki pelaajat
      * @return Lista pelaajista

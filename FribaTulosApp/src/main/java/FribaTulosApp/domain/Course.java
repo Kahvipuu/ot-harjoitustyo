@@ -17,7 +17,7 @@ public class Course {
     public Course(String name) {
         this.holes = new ArrayList<>();
         this.name = name;
-        int defaultHoleAmount = 6;
+        int defaultHoleAmount = 9;
         this.numberOfHoles = defaultHoleAmount;
         for (int x = 0; x < defaultHoleAmount; x++) {
             this.addHole();
