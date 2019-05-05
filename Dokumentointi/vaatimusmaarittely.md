@@ -2,40 +2,35 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla voi pitää kirjaa käyttäjän ja muun seurueen tuloksista frisbeegolf kierroksella. Sovellus muistaa siihen tallennetut radat ja niiden par -tulokset ja näyttää kierroksella pelaajien kumulatiivisen tuloksen sekä keskinäisen järjestyksen.
+Sovelluksen avulla voi pitää kirjaa käyttäjän ja muun seurueen tuloksista frisbeegolf kierroksella. 
+Sovellus muistaa siihen tallennetut pelaajat sekä radat. Tulokset tallennetaan myöhempää tarkastelua varten. (Toistaiseksi tulosten tallennus ei toimi)
 
 ## Käyttäjät
-Alkuun luon roolin vain peruskäyttäjälle, mutta siten että yksi käyttäjä voi kirjata tulokset kerralla usealle käyttäjälle. Usein yksi pitää kirjaa kaikkien tuloksesta joten käyttäjien luomisen tulee olla helppoa.
+Rooleja ei ole toistaiseksi jaettu, yksi käyttäjä voi kirjata tulokset kerralla muille.
+Usein yksi pitää kirjaa kaikkien tuloksesta joten käyttäjien luomisen tulee olla helppoa.
 
 ## Käyttöliittymäluonnos
-Piirrustuksen liitän jos sellaiselle koen tarvetta jatkossa. Perinteinen tapa toteuttaa vastaava sovellus on helppokäyttöisillä '+' ja '-' -napeilla.
-
+Sovellus koostuu eri näkymistä joiden välillä on helppoa siirtyä. Omat näkymät on ratojen ja pelaajien luomiselle sekä kierrokselle ja sen tuloksille.
 
 ## Perusversion tarjoama toiminnallisuus
 
-### Ennen kirjautumista
+### Kirjautuminen
 
-- Käyttäjä voi luoda oman tunnuksen
-  - Uniikki ja varmaan se kolme merkkiä tähän riittää
-
-- Kirjautuminen
-  - Jos tunnusta ei ole niin kysytään luodaanko uusi /(tai sitten vain ilmoitetaan puutteesta)  
-  
-### Kirjautumisen jälkeen
+- Varsinaista kirjautumista ei ohjelmassa toistaiseksi ole
 
 - Käyttäjä voi luoda pelaajia jotka halutaan kierrokselle mukaan
 
 - Käyttäjä voi aloittaa uuden pelikierroksen
-  - joko uudella tai vanhalla radalla
-  - ja halutuilla pelaajilla
+  - joko vanhalla radalla tai luoda toisessa näkymässä uuden
+  - ja halutuilla pelaajilla, joita voi myös luoda toisessa näkymässä uusia
 
-- Kun kierros on pelattu se tallennetaan tietokantaan
-  - Vanhoja tuloksia voi selata sekä katsoa kierrosten keskiarvoja sekä muita oleellisia tietoja
+- Kierrosta tallennetaan tiedostoon samalla kun tulokset kirjataan
 
-- Uloskirjautuminen  
+- Uloskirjautumiselle ei ole toistaiseksi tarvetta
 
 
 ## Kehitysideoita
-Jos ei ole liian vaikeaa niin teen toiminnallisuuden jolla uusi käyttäjä voi ottaa itselleen haltuun jo luodun pelaajan tiedot.
-Sään salliessa saatan yrittää muistella miten tehdään yksinkertainen graafi, josta pelaaja voi katsella kehitystään.
-Muissa vastaavissa sovelluksissa on esimeriksi kartta tallennettuna ja niillä reitit ja pituudet.
+Vanhat tulokset olisi tarkoitus saada katsottavaksi ja näistä voisi laskea kierrosten keskiarvoja sekä muita oleellisia tietoja.
+Tietojen tallentaminen helposti kaikkien saataville olisi käytännöllistä, mutta vaatii myös jonkinlaisen kirjautumisen.
+Muissa vastaavissa sovelluksissa on esimeriksi kartta tallennettuna ja niillä reitit ja pituudet. 
+Tällainen sovellus tietenkin pitäisi tehdä mobiilisovelluksena, kun kukaan tuskin tietokonettaan metsään vie, mutta ajatusharjoituksena ihan kelvollinen yritys.
