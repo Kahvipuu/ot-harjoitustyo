@@ -47,59 +47,53 @@ public class FileCourseDao implements CourseDao { //Miksi tämä ymmärtää ilm
      */
     private void save() throws Exception { //tälle pitäisi tehdä testit, kun kuitenkin unohtaa muuttaa Coursen mukana
         try (FileWriter writer = new FileWriter(new File(file))) {
-            for (Course c: courses){
-                writer.write(c.getName() +";" +c.getNumberOfHoles());
-            }
-        }
-
-        }
-
-        /**
-         * Uuden väylän tallentaminen olemassaolevien listaan
-         *
-         * @param c Tallennettava väylä
-         * @return palauttaa tallennetun takaisin, tähän on varmasti joku hyvä
-         * syy.. älä kysy
-         * @throws Exception
-         */
-        @Override
-        public Course create
-        (Course c) throws Exception {
-            courses.add(c);
-            save();
-            return c;
-        }
-
-        /**
-         * Olemassaolevan väylän etsintä nimellä
-         *
-         * @param name Etsittävän väylän nimi
-         * @return Palauttaa null jos väylää ei löydy, tai löydetyn väylän
-         */
-        @Override
-        public Course findByCourseName
-        (String name
-        
-            ) {
-        Course toReturn = null;
             for (Course c : courses) {
-                if (c.getName().equals(name)) {
-                    toReturn = c;
-                }
+                writer.write(c.getName() + ";" + c.getNumberOfHoles() + "\n");
             }
-            return toReturn;
-        }
-
-        /**
-         * Palauttaa listan väylistä
-         *
-         * @return Lista väylista
-         */
-        @Override
-        public List<Course> getAll
-        
-            () {
-        return courses;
         }
 
     }
+
+    /**
+     * Uuden väylän tallentaminen olemassaolevien listaan
+     *
+     * @param c Tallennettava väylä
+     * @return palauttaa tallennetun takaisin, tähän on varmasti joku hyvä syy..
+     * älä kysy
+     * @throws Exception
+     */
+    @Override
+    public Course create(Course c) throws Exception {
+        courses.add(c);
+        save();
+        return c;
+    }
+
+    /**
+     * Olemassaolevan väylän etsintä nimellä
+     *
+     * @param name Etsittävän väylän nimi
+     * @return Palauttaa null jos väylää ei löydy, tai löydetyn väylän
+     */
+    @Override
+    public Course findByCourseName(String name) {
+        Course toReturn = null;
+        for (Course c : courses) {
+            if (c.getName().equals(name)) {
+                toReturn = c;
+            }
+        }
+        return toReturn;
+    }
+
+    /**
+     * Palauttaa listan väylistä
+     *
+     * @return Lista väylista
+     */
+    @Override
+    public List<Course> getAll() {
+        return courses;
+    }
+
+}

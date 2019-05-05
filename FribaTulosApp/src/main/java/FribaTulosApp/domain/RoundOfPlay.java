@@ -2,39 +2,41 @@ package fribatulosapp.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Luokka kierrokselle
  */
-
 public class RoundOfPlay {
 
     Course course;
-    HashMap<Player, int[]> players;
+    HashMap<Player, int[]> playersNScores;
+    private int idNumber;
 
-    public RoundOfPlay(Course course) {
+    public RoundOfPlay(Course course, int id) {
         this.course = course;
-        this.players = new HashMap<>();
+        this.playersNScores = new HashMap<>();
+        this.idNumber = id;
     }
 
-    
     /**
      * Pelaajan lisääminen kierrokselle
+     *
      * @param player Kierrokselle lisättävä pelaaja
      */
     public void addPlayer(Player player) {
-        this.players.putIfAbsent(player, new int[course.getNumberOfHoles()]);
+        this.playersNScores.putIfAbsent(player, new int[course.getNumberOfHoles()]);
     }
 
-    
     /**
      * Tuloksen lisääminen kierroksella olevalle pelaajalle
+     *
      * @param player Pelaaja jolle tulos lisätään
      * @param holeNumber Väylän numero
      * @param result Pelaajan heittojen määrä
      */
     public void addResult(Player player, int holeNumber, int result) {
-        this.players.get(player)[holeNumber] = result;
+        this.playersNScores.get(player)[holeNumber] = result;
     }
 
     public Course getCourse() {
@@ -42,7 +44,7 @@ public class RoundOfPlay {
     }
 
     public Player getPlayer(String name) {
-        for (Player player : players.keySet()) {
+        for (Player player : playersNScores.keySet()) {
             if (player.getName().equals(name)) {
                 return player;
             }
@@ -50,8 +52,28 @@ public class RoundOfPlay {
         return null;    //saattaa joutua muokkaamaan
     }
 
-    public int getResult(Player player, int hole) {
-        return players.get(player)[hole];
+    public ArrayList<Player> getAllPlayers() {
+        ArrayList<Player> toReturn = new ArrayList<>();
+        for (Player p : playersNScores.keySet()) {
+            toReturn.add(p);
+        }
+        return toReturn;
+    }
+
+    public int getOneResult(Player player, int hole) {
+        return playersNScores.get(player)[hole];
+    }
+
+    public int[] getAllResult(Player p) {
+        return playersNScores.get(p);
+    }
+
+    public int getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(int i) {
+        this.idNumber = i;
     }
 
 }

@@ -1,5 +1,5 @@
 
-package fribatulosapp.dao;
+package FribaTulosApp.dao;
 
 import fribatulosapp.domain.Player;
 import java.util.List;

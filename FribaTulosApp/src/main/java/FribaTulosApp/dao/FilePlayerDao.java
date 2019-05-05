@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * Pelaajan tiedoista ja niiden tallentamisesta vastaava luokka
  */
-public class FilePlayerDao implements fribatulosapp.dao.PlayerDao { //miksiköhän täytyy koko path olla?
+public class FilePlayerDao implements PlayerDao {
 
     private List<Player> players;
     private String file;

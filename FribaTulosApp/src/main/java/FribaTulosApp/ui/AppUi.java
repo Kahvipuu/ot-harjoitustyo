@@ -1,5 +1,9 @@
 package fribatulosapp.ui;
 
+import FribaTulosApp.dao.FileCourseDao;
+import FribaTulosApp.dao.FilePlayerDao;
+import FribaTulosApp.dao.FileRoundOfPlayDao;
+import fribatulosapp.domain.AppService;
 import fribatulosapp.domain.Player;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -12,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 /**
  * Sovelluksen käyttöliittymästä vastaava luokka
  */
@@ -19,6 +24,20 @@ public class AppUi extends Application {
 
     public static int leveys = 600;
     public static int korkeus = 800;
+
+    private AppService appservice;
+    
+    @Override
+    public void init() throws Exception {
+        String playerFile = "players.txt"; //jatkoa varten, muuten ei tarvitsisi erikseen
+        String courseFile = "courses.txt";
+        String roundsFile = "rounds.txt";
+
+        FilePlayerDao playerDao = new FilePlayerDao(playerFile);
+        FileCourseDao courseDao = new FileCourseDao(courseFile);
+        FileRoundOfPlayDao ropDao = new FileRoundOfPlayDao(roundsFile, courseDao, playerDao);
+        appservice = new AppService(playerDao, courseDao, ropDao);
+    }
 
     @Override
     public void start(Stage window) throws Exception {
@@ -54,7 +73,7 @@ public class AppUi extends Application {
         createNewPlayerLayout2.add(playerNameField, 1, 0);
 
         createPlayerButton.setOnAction((event) -> new Player(playerNameField.getText()));  // Pejaajat ehkä Listaan, niin saa otteen uusista.. itse luonti Service-luokkaan
-                                                                                            // ja service tämän luokan privaksi
+        // ja service tämän luokan privaksi
         createNewPlayerLayout2.add(createPlayerButton, 2, 0);
 
         Scene naytettava = new Scene(layout);

@@ -1,6 +1,8 @@
 package fribatulosapp.domain;
 
-import fribatulosapp.dao.PlayerDao;
+import FribaTulosApp.dao.CourseDao;
+import FribaTulosApp.dao.ROPDao;
+import FribaTulosApp.dao.PlayerDao;
 import java.util.List;
 
 /**
@@ -9,12 +11,15 @@ import java.util.List;
 public class AppService {
 
     private PlayerDao playerDao;
-    //private CourseDao CourseDao; //tänne kaikki ratojen tallennukset jne.. sama kuin player
-    private List<Player> onRound; //menisikö ennemmin kierroksen Daoon sisälle
-    //private ROPDao ROPDao; //kierrokselle oma dao ja tänne se.. pejaajat ja radat pysyviä.. kierrosta ei tarvitse säilyttää.. mutta tulokset talteen jonnekin..
+    private CourseDao courseDao; //tänne kaikki ratojen tallennukset jne.. sama kuin player
+    private ROPDao rOPDao; //kierrokselle oma dao ja tänne se.. pejaajat ja radat pysyviä.. kierrosta ei tarvitse säilyttää.. mutta tulokset talteen jonnekin..
+    private RoundOfPlay currentROP;
 
-    public AppService(PlayerDao pD) { //Muista lisäillä muut Daot kun ne saat tehtyä
+    public AppService(PlayerDao pD, CourseDao cD, ROPDao rD) { //Muista lisäillä muut Daot kun ne saat tehtyä
         this.playerDao = pD;
+        this.courseDao = cD;
+        this.rOPDao = rD;
+        this.currentROP = null;
     }
 
     /**
@@ -24,7 +29,13 @@ public class AppService {
      * @return true jos kaikki meni oikein, muuten palauttaa false
      */
     public boolean createPlayer(String name) {
-        return false; //soon
+        Player p = new Player(name);
+        try {
+            playerDao.create(p);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -34,7 +45,13 @@ public class AppService {
      * @return true jos onnistui, muuten false
      */
     public boolean createCourse(String name) {
-        return false; //sadasd
+        Course c = new Course(name);
+        try {
+            courseDao.create(c);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -44,7 +61,14 @@ public class AppService {
      * @return
      */
     public boolean createROP(Course course) { //ehkä suoraan Rata luonnissa, sitten pelaajat mukaan
-        return false;
+        RoundOfPlay rop = new RoundOfPlay(course, -1);
+        try {
+            rOPDao.create(rop);
+            this.currentROP = rop;
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -53,27 +77,33 @@ public class AppService {
      * @param p lisättävä pelaaja
      * @return true jos onnistui, muuten false
      */
-    public boolean addPlayerToROP(Player p) { //pelaajan lisääminen kierrokselle
-        return false;
+    public boolean addPlayerToROP(Player p) throws Exception { //pelaajan lisääminen kierrokselle
+        try {
+            this.currentROP.addPlayer(p);
+        } catch (Exception e) {
+            return false;
+        }
+        rOPDao.save();
+        return true;
     }
 
-    
     /**
      * Palauttaa listan kierroksen pelaajista
+     *
      * @return Lista kierrokselle lisätyistä pelaajista
      */
     public List<Player> getPlayersOnROP() { //ehkä (Course c)
-        return onRound; //pitääkö spesifioida kierros?? monta kerralla auki?
+        return currentROP.getAllPlayers(); //pitääkö spesifioida kierros?? monta kerralla auki? TEKEEKÖ TÄLLÄ VIELÄ JOTAIN
     }
 
     /**
-     * Sulkee annetun kierroksen ja tallentaa tulokset
-     * 
+     * Sulkee kierroksen ja tallentaa tulokset
+     *
      * @param c Loppuun pelattu ja suljettava kierros
      */
-    
-    public void closeROP(Course c) {
-        // tallenna tiedot jonnekin ja sulje ROP
+    public void closeROP() throws Exception {
+        rOPDao.save();
+        this.currentROP = null;
     }
 
 }

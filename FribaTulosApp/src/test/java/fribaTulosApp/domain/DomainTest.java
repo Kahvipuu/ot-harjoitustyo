@@ -40,7 +40,7 @@ public class DomainTest {
     public void setUp() {
         this.player = new Player("MrNobody");
         this.course = new Course("test", 18);
-        this.rop = new RoundOfPlay(course);
+        this.rop = new RoundOfPlay(course, 1); //järjestysnumero uutena
 
     }
 
@@ -77,7 +77,7 @@ public class DomainTest {
         this.rop.addResult(player, 1, 5);
         this.rop.addResult(player, 1, 3);
         this.rop.addResult(player, 2, 4);
-        assertEquals(3, rop.getResult(player, 1));
+        assertEquals(3, rop.getOneResult(player, 1));
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
