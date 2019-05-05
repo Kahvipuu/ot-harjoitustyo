@@ -4,17 +4,30 @@ import FribaTulosApp.dao.FileCourseDao;
 import FribaTulosApp.dao.FilePlayerDao;
 import FribaTulosApp.dao.FileRoundOfPlayDao;
 import fribatulosapp.domain.AppService;
+import fribatulosapp.domain.Course;
 import fribatulosapp.domain.Player;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +39,25 @@ public class AppUi extends Application {
     public static int korkeus = 800;
 
     private AppService appservice;
-    
+    private VBox playersCreated;
+    private VBox coursesCreated;
+
+    public void redrawLists() {
+        playersCreated.getChildren().clear();
+        coursesCreated.getChildren().clear();
+
+        List<Player> playerlist = appservice.getAllPlayers();
+        List<Course> courselist = appservice.getAllCourses();
+
+        for (Player p : playerlist) {
+            playersCreated.getChildren().add(new Label(p.getName()));
+        }
+        for (Course c : courselist) {
+            coursesCreated.getChildren().add(new Label(c.getName()));
+        }
+
+    }
+
     @Override
     public void init() throws Exception {
         String playerFile = "players.txt"; //jatkoa varten, muuten ei tarvitsisi erikseen
@@ -37,6 +68,8 @@ public class AppUi extends Application {
         FileCourseDao courseDao = new FileCourseDao(courseFile);
         FileRoundOfPlayDao ropDao = new FileRoundOfPlayDao(roundsFile, courseDao, playerDao);
         appservice = new AppService(playerDao, courseDao, ropDao);
+        playersCreated = new VBox();
+        coursesCreated = new VBox();
     }
 
     @Override
@@ -49,37 +82,84 @@ public class AppUi extends Application {
         topOfScreen.setSpacing(20);
 
         Button startRound = new Button("Aloita Kierros");
-        topOfScreen.getChildren().add(startRound);
-        Button createPlayer = new Button("Luo Pelaaja");
-        topOfScreen.getChildren().add(createPlayer);
-        Button something = new Button("Tee Jotain");
-        topOfScreen.getChildren().add(something);
+        Button createPlayer = new Button("Luo uusi pelaaja");
+        Button createCourse = new Button("Luo uusi rata");
+        Button archive = new Button("Arkisto");
+        topOfScreen.getChildren().addAll(startRound, createPlayer, createCourse, archive);
 
-        StackPane startRoundLayout = createLayout("Kierros");
-        StackPane createNewPlayerLayout = createLayout("Pelaaja");
-        StackPane somethingLayout = createLayout("Jotain");
+        FlowPane startRoundLayout = new FlowPane(Orientation.VERTICAL);
+        FlowPane createNewPlayerLayout = new FlowPane(Orientation.VERTICAL);
+        FlowPane createNewCourseLayout = new FlowPane(Orientation.VERTICAL);
+        FlowPane archiveLayout = new FlowPane(Orientation.VERTICAL);
 
         startRound.setOnAction((event) -> layout.setCenter(startRoundLayout));
         createPlayer.setOnAction((event) -> layout.setCenter(createNewPlayerLayout));
-        something.setOnAction((event) -> layout.setCenter(somethingLayout));
+        createCourse.setOnAction((event) -> layout.setCenter(createNewCourseLayout));
+        archive.setOnAction((event) -> layout.setCenter(archiveLayout));
 
-        GridPane createNewPlayerLayout2 = new GridPane();
-        createNewPlayerLayout.getChildren().add(createNewPlayerLayout2);
-
+        //pelaajan luontia
         Label playerNameLabel = new Label("Nimi: ");
         TextField playerNameField = new TextField();
         Button createPlayerButton = new Button("Luo pelaaja");
-        createNewPlayerLayout2.add(playerNameLabel, 0, 0);
-        createNewPlayerLayout2.add(playerNameField, 1, 0);
+        Label playersExistingLabel = new Label("Olemassaolevat pelaajat:");
 
-        createPlayerButton.setOnAction((event) -> new Player(playerNameField.getText()));  // Pejaajat ehkä Listaan, niin saa otteen uusista.. itse luonti Service-luokkaan
-        // ja service tämän luokan privaksi
-        createNewPlayerLayout2.add(createPlayerButton, 2, 0);
+        createNewPlayerLayout.getChildren().addAll(playerNameLabel, playerNameField, createPlayerButton, playersExistingLabel, playersCreated);
 
-        Scene naytettava = new Scene(layout);
+        createPlayerButton.setOnAction(e -> {
+            appservice.createPlayer(playerNameField.getText());
+            playerNameField.setText("");
+            redrawLists();
+
+        });
+
+        //Radan luontia
+        Label courseNameLabel = new Label("Nimi: ");
+        Label courseHolesLabel = new Label("Väylien määrä: ");
+        TextField courseNameField = new TextField();
+        TextField courseHolesField = new TextField("18");
+        Button createCourseButton = new Button("Luo uusi rata");
+        Label coursesExistingLabel = new Label("Olemassaolevat radat:");
+
+        createNewCourseLayout.getChildren().addAll(courseNameLabel, courseNameField, courseHolesLabel, courseHolesField, createCourseButton, coursesExistingLabel, coursesCreated);
+
+        createCourseButton.setOnAction(e -> {
+            int i = Integer.parseInt(courseHolesField.getText());
+            appservice.createCourse(courseNameField.getText(), i);
+            courseNameField.setText("");
+            courseHolesField.setText("18");
+            redrawLists();
+        });
+
+        // Kierros
+        Label courseToStartLabel = new Label("Mikä rata valitaan?");
+        TextField courseToStartField = new TextField();
+        Button createNewRound = new Button("Aloita uusi kierros");
+        Label playersToStartCourseLabel = new Label("Kierrokselle lisättävä pelaaja:");
+        TextField playersToStartCourseField = new TextField();
+        Button playersToStartCourseButton = new Button("Lisää pelaaja kierrokselle");
+
+        startRoundLayout.getChildren().addAll(courseToStartLabel, courseToStartField, createNewRound, playersToStartCourseLabel, playersToStartCourseField, playersToStartCourseButton);
+
+        createNewRound.setOnAction(e -> {
+            appservice.createROP(appservice.getCourseByName(courseToStartField.getText()));
+        });
+
+        playersToStartCourseButton.setOnAction(e -> {
+            try {
+                appservice.addPlayerToROP(appservice.getPlayerByName(playersToStartCourseField.getText()));
+            } catch (Exception ex) {
+                System.out.println("Pelaajan lisäämisessä ongelma");;
+            }
+
+        });
+
+        // set Scene yms.
+        redrawLists();
+
+        Scene onScene = new Scene(layout);
 
         window.setTitle("Friba");
-        window.setScene(naytettava);
+        window.setScene(onScene);
         window.show();
 
     }
@@ -88,7 +168,7 @@ public class AppUi extends Application {
         launch(AppUi.class);
     }
 
-    private StackPane createLayout(String teksti) {
+    private StackPane createLayout(String teksti) { //Käyttämätön
 
         StackPane asettelu = new StackPane();
         asettelu.setPrefSize(450, 600);

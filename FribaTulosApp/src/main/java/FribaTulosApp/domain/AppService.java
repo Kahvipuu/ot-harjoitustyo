@@ -44,8 +44,8 @@ public class AppService {
      * @param name Luotavan radan nimi
      * @return true jos onnistui, muuten false
      */
-    public boolean createCourse(String name) {
-        Course c = new Course(name);
+    public boolean createCourse(String name, Integer holes) {
+        Course c = new Course(name, holes);
         try {
             courseDao.create(c);
         } catch (Exception e) {
@@ -92,10 +92,26 @@ public class AppService {
      *
      * @return Lista kierrokselle lisätyistä pelaajista
      */
-    public List<Player> getPlayersOnROP() { //ehkä (Course c)
-        return currentROP.getAllPlayers(); //pitääkö spesifioida kierros?? monta kerralla auki? TEKEEKÖ TÄLLÄ VIELÄ JOTAIN
+    public List<Player> getPlayersOnROP() {
+        return currentROP.getAllPlayers(); //pi
     }
 
+    public List<Player> getAllPlayers(){
+        return playerDao.getAll();
+    }
+    
+    public List<Course> getAllCourses(){
+        return courseDao.getAll();
+    }
+    
+    public Course getCourseByName(String name){
+        return courseDao.findByCourseName(name);
+    }
+
+    public Player getPlayerByName(String name){
+        return playerDao.findByPlayerName(name);
+    }
+    
     /**
      * Sulkee kierroksen ja tallentaa tulokset
      *
@@ -106,4 +122,5 @@ public class AppService {
         this.currentROP = null;
     }
 
+    
 }
