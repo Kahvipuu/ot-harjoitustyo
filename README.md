@@ -11,10 +11,11 @@ Sovellukseen merkitään frisbeegolf tulokset kierroksittain ja henkilöittäin.
 
 [Käyttöohje.md](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/Dokumentointi/Kayttoohje.md)
 
-[Testausdokumentti] (https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/Dokumentointi/Testausdokumentti.md)
+[Testausdokumentti.md](https://github.com/Kahvipuu/ot-harjoitustyo/blob/master/Dokumentointi/Testausdokumentti.md)
 
 ## Releaset
 [Release, viimeisin. Vain Jar] (https://github.com/Kahvipuu/ot-harjoitustyo/releases/download/1b/FribaTulosApp-1.0-SNAPSHOT.jar)
+
 [Kaikki] (https://github.com/Kahvipuu/ot-harjoitustyo/releases)
 
 ## Työaikakirjanpito
