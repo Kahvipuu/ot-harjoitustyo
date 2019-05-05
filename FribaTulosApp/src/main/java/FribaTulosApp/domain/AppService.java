@@ -44,7 +44,7 @@ public class AppService {
      * @param name Luotavan radan nimi
      * @return true jos onnistui, muuten false
      */
-    public boolean createCourse(String name, Integer holes) {
+    public boolean createCourse(String name, int holes) {
         Course c = new Course(name, holes);
         try {
             courseDao.create(c);
@@ -96,22 +96,39 @@ public class AppService {
         return currentROP.getAllPlayers(); //pi
     }
 
-    public List<Player> getAllPlayers(){
+    public List<Player> getAllPlayers() {
         return playerDao.getAll();
     }
-    
-    public List<Course> getAllCourses(){
+
+    public List<Course> getAllCourses() {
         return courseDao.getAll();
     }
-    
-    public Course getCourseByName(String name){
+
+    public Course getCourseByName(String name) {
         return courseDao.findByCourseName(name);
     }
 
-    public Player getPlayerByName(String name){
+    public Player getPlayerByName(String name) {
         return playerDao.findByPlayerName(name);
     }
-    
+
+    public String getCurrentCourseName() {
+        return this.currentROP.getCourse().getName();
+    }
+
+    public void addResultForPlayer(String name, int holeNumber, int result) {
+        currentROP.addResult(playerDao.findByPlayerName(name), holeNumber, result);
+    }
+
+    /**
+     * Palauttaa tämänhetkisen kierroksen väylien lukumäärän
+     *
+     * @return
+     */
+    public int getNumberOfHoles() {
+        return currentROP.getCourse().getNumberOfHoles();
+    }
+
     /**
      * Sulkee kierroksen ja tallentaa tulokset
      *
@@ -122,5 +139,4 @@ public class AppService {
         this.currentROP = null;
     }
 
-    
 }

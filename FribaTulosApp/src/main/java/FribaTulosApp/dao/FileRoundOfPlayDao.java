@@ -17,8 +17,9 @@ public class FileRoundOfPlayDao implements ROPDao {
 
     private List<RoundOfPlay> roplist;
     private String file;
+    //ja jostain syystä ei tunnista playerDaoa.. eli pitäisi kaikki pakettien nimiin viittaava käsin vaihtaa lowercaseksi..
 
-    public FileRoundOfPlayDao(String file, CourseDao courseDao, PlayerDao playerDao) throws IOException { //Edelleen toisteista koodia ja jostain syystä ei tunnista playerDaoa
+    public FileRoundOfPlayDao(String file, CourseDao courseDao, PlayerDao playerDao) throws IOException { //Edelleen toisteista koodia
         roplist = new ArrayList<>();
         this.file = file;
         try {
@@ -35,7 +36,6 @@ public class FileRoundOfPlayDao implements ROPDao {
             FileWriter writer = new FileWriter(new File(file));
             writer.close();
         }
-
     }
 
     private void addPlayerScoresFromFile(String[] parts, RoundOfPlay rop, PlayerDao playerDao) {
@@ -46,7 +46,6 @@ public class FileRoundOfPlayDao implements ROPDao {
                 rop.addResult(p, z, Integer.parseInt(playerscore[z]));
             }
         }
-
     }
 
     /**
@@ -70,7 +69,6 @@ public class FileRoundOfPlayDao implements ROPDao {
                 writer.write("\n");
             }
         }
-
     }
 
     public int newRopId() {
@@ -87,12 +85,18 @@ public class FileRoundOfPlayDao implements ROPDao {
 
     @Override
     public RoundOfPlay findByROPNumber(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RoundOfPlay toReturn = null;
+        for (RoundOfPlay rop : roplist) {
+            if (rop.getIdNumber() == i) {
+                toReturn = rop;
+            }
+        }
+        return toReturn;
     }
 
     @Override
     public List<RoundOfPlay> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return roplist;
     }
 
 }

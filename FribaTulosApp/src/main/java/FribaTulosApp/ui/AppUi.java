@@ -137,16 +137,23 @@ public class AppUi extends Application {
         Label playersToStartCourseLabel = new Label("Kierrokselle lisättävä pelaaja:");
         TextField playersToStartCourseField = new TextField();
         Button playersToStartCourseButton = new Button("Lisää pelaaja kierrokselle");
+        Label courseStartedLabel = new Label("");
+        HBox playersOnCourse = new HBox();
 
-        startRoundLayout.getChildren().addAll(courseToStartLabel, courseToStartField, createNewRound, playersToStartCourseLabel, playersToStartCourseField, playersToStartCourseButton);
+        startRoundLayout.getChildren().addAll(courseToStartLabel, courseToStartField, createNewRound, playersToStartCourseLabel, playersToStartCourseField,
+                playersToStartCourseButton, courseStartedLabel, playersOnCourse);
 
         createNewRound.setOnAction(e -> {
             appservice.createROP(appservice.getCourseByName(courseToStartField.getText()));
+            courseStartedLabel.setText(appservice.getCurrentCourseName());
+            courseToStartField.setText("");
         });
 
         playersToStartCourseButton.setOnAction(e -> {
             try {
                 appservice.addPlayerToROP(appservice.getPlayerByName(playersToStartCourseField.getText()));
+                VBox playerResults = createLayoutForPlayerOnRound(playersToStartCourseField.getText());
+                startRoundLayout.getChildren().add(playerResults);
             } catch (Exception ex) {
                 System.out.println("Pelaajan lisäämisessä ongelma");;
             }
@@ -166,6 +173,33 @@ public class AppUi extends Application {
 
     public static void main(String[] args) {
         launch(AppUi.class);
+    }
+
+    private VBox createLayoutForPlayerOnRound(String name) {
+        VBox toReturn = new VBox();
+        Label playerName = new Label(name);
+        int holes = appservice.getNumberOfHoles();
+        toReturn.getChildren().add(playerName);
+
+        for (int x = 1; x <= holes; x++) {
+            HBox toAdd = createTextFieldsForLayout(holes, name);
+            toReturn.getChildren().add(toAdd);
+        }
+        return toReturn;
+    }
+
+    private HBox createTextFieldsForLayout(int holenumber, String name) {
+        HBox toReturn = new HBox();
+        Label holeNumberLabel = new Label("" + holenumber);
+        TextField result = new TextField();
+        Button finished = new Button();
+
+        finished.setOnAction(e -> {
+            appservice.addResultForPlayer(name, holenumber, Integer.parseInt(result.getText()));
+        });
+
+        toReturn.getChildren().addAll(holeNumberLabel, result, finished);
+        return toReturn;
     }
 
     private StackPane createLayout(String teksti) { //Käyttämätön
