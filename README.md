@@ -53,3 +53,6 @@ mvn jxr:jxr checkstyle:checkstyle
 
 Raportti löytyy sijainnista:
 ../target/site/checkstyle.html
+
+
+Testi, liittyy vain gitiin
